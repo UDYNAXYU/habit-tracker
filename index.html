@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Мета-информация о документе -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Иконки для разных платформ -->
+    <link rel="icon" href="favicon.ico" />
+    <link rel="icon" href="img/favicons/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="img/favicons/favicon_180.png" />
+
+    <!-- Подключение шрифтов Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Подключение основного CSS -->
+    <link rel="stylesheet" href="styles/main.css" />
+
+    <!-- Заголовок страницы -->
+    <title>dailyDo - трекер привычек</title>
+  </head>
+  <body>
+    <!-- Основная обертка контента -->
+    <div class="wrapper">
+      <!-- Шапка сайта -->
+      <header class="header">
+        <!-- Логотип -->
+        <div class="logo">
+          <img src="img/logo.svg" alt="Logo dailyDo" class="logo-icon"/>
+          <div class="logo-text">dailyDo</div>
+        </div>
+
+        <!-- Навигация -->
+        <nav class="navigation">
+          <div class="menu"></div>
+          <!-- Кнопка добавления привычки -->
+          <button class="add-button" onclick="toglePopup()">
+            <svg class="add-button-icon">
+              <use xlink:href="img/sprite.svg#add"></use>
+            </svg>
+          </button>
+        </nav>
+      </header>
+
+      <!-- Основное содержимое - трекер привычек -->
+      <main class="habit">
+        <div class="habbit-content">
+          <!-- Заголовок привычки -->
+          <header class="habit-header">
+            <h2 class="habit-title"></h2>
+            <!-- Блок прогресса -->
+            <div class="progres">
+              <p class="progres-title">Прогресс</p>
+              <p class="progres-percent"></p>
+              <div class="progres-bar"></div>
+            </div>
+          </header>
+
+          <!-- Список дней привычки -->
+          <ul class="habit-list" role="list"></ul>
+
+          <!-- Форма добавления нового дня -->
+          <div class="comment new-comment">
+            <h3 class="comment-day"></h3>
+            <form class="comment-description" onsubmit="addDays(event)">
+              <input
+                class="comment-input"
+                placeholder="Комментарий"
+                name="newDayComment"
+                type="text"
+              />
+              <button class="button" type="submit">Готово</button>
+            </form>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- Попап создания привычки -->
+    <div class="popup">
+      <h3 class="popup-head">Новая привычка</h3>
+      <p class="popup-subtext">Иконка</p>
+
+      <!-- Форма добавления привычки -->
+      <form class="popup-form" onsubmit="addHabbit(event)">
+        <!-- Выбор иконки привычки -->
+        <div class="popup-button-list">
+          <input type="radio" name="habbit" id="habbit-sport" value="sport" class="popup-radio"/>
+          <label for="habbit-sport" class="popup-button">
+            <svg class="popup-icon"><use xlink:href="img/sprite.svg#sport"></use></svg>
+          </label>
+
+          <input type="radio" name="habbit" id="habbit-water" value="water" class="popup-radio"/>
+          <label for="habbit-water" class="popup-button">
+            <svg class="popup-icon"><use xlink:href="img/sprite.svg#water"></use></svg>
+          </label>
+
+          <input type="radio" name="habbit" id="habbit-food" value="food" class="popup-radio"/>
+          <label for="habbit-food" class="popup-button">
+            <svg class="popup-icon"><use xlink:href="img/sprite.svg#food"></use></svg>
+          </label>
+        </div>
+
+        <!-- Поля ввода информации о привычке -->
+        <div class="popup-input-list">
+          <input class="popup-input" placeholder="Название" name="habbitName" type="text"/>
+          <input class="popup-input" placeholder="Цель" name="habbitGoal" type="text"/>
+        </div>
+
+        <!-- Кнопка отправки формы -->
+        <button class="button popup-form-button" type="submit">Добавить</button>
+      </form>
+
+      <!-- Кнопка закрытия попапа -->
+      <button class="popup-close" onclick="toglePopup()">
+        <svg class="popup-close-icon"><use xlink:href="img/sprite.svg#cross"></use></svg>
+      </button>
+    </div>
+
+    <!-- Страница достижений -->
+    <div id="achievements-page" class="achievements-page">
+      <div class="achievements-container">
+        <h2>Мои достижения</h2>
+        <!-- Сетка для отображения достижений -->
+        <div class="achievements-grid" id="achievements-grid"></div>
+        <!-- Кнопка закрытия страницы достижений -->
+        <button class="button close-achievements" onclick="closeAchievements()">Закрыть</button>
+      </div>
+    </div>
+
+    <!-- Кнопка показа достижений -->
+    <button id="show-achievements-btn" class="achievements-button">
+      <svg width="20" height="20" viewBox="0 0 24 24">
+        <path fill="currentColor" d="M12 2L4 5v6.09c0 5.05 3.41 9.76 8 10.91c4.59-1.15 8-5.86 8-10.91V5l-8-3zm0 15c-2.76 0-5-2.24-5-5s2.24-5 5-5s5 2.24 5 5s-2.24 5-5 5zm1.65-2.65L11.5 12.2V9h1v2.79l1.85 1.85l-.7.71z"/>
+      </svg>
+      Достижения
+    </button>
+
+    <!-- Подключение основного JavaScript -->
+    <script src="scripts/app.js"></script>
+  </body>
+</html>
