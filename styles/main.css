@@ -1,0 +1,863 @@
+@import url(reset.css);
+@import url(common.css);
+
+body {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background-color: var(--main-background);
+}
+
+.wrapper {
+  display: flex;
+  max-width: 100rem;
+}
+
+.header {
+  min-height: 100vh;
+  padding: 1.875rem;
+  background: var(--secondary-background);
+}
+
+.logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: auto;
+  height: auto;
+  margin-inline: auto;
+  margin-block-end: 2rem;
+}
+
+.logo-icon {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 10px;
+}
+
+.logo-text {
+  color: #B8B8FF;
+  font-family: 'Comfortaa', cursive;
+  font-size: 1.5rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+.logo img {
+  margin-inline: auto;
+}
+
+.navigation {
+  width: 300px; /* Фиксированная ширина */
+  padding: 20px;
+}
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 100%;
+}
+
+.navigation:has(.menu:empty) {
+  gap: 0;
+}
+.menu-item {
+  margin-bottom: 10px;
+}
+
+.menu-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: var(--secondary-background);
+  cursor: pointer;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.menu-icon {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  stroke: #B8B8FF; /* Фиолетовый цвет для иконок */
+  stroke-width: 1.5; /* Чуть толще линии */
+  fill: none; /* Убираем заливку если есть */
+  transition: all 0.3s ease;
+}
+
+
+.menu-link:hover,
+.menu-link:focus {
+  background-color: var(--accent-color);
+  stroke: white;
+  filter: hue-rotate(10deg);
+}
+
+.menu-link-active {
+  background-color: var(--accent-color);
+  stroke: white;
+}
+.menu-link-active .menu-icon {
+  stroke: #7B4AE2; /* Акцентный цвет для активной привычки */
+  stroke-width: 2; /* Выделяем активную иконку */
+}
+.add-button,
+.popup-button {
+  width: 2.8125rem;
+  height: 2.8125rem;
+  padding: 0.75rem;
+  border-radius: 0.875rem;
+  border: 1px solid var(--batton-add);
+  background: none;
+  stroke: var(--batton-add);
+  cursor: pointer;
+  transition: 300ms;
+}
+.menu-link:hover .menu-icon {
+  stroke: #FFFFFF; /* Белый при наведении */
+  transform: scale(1.1); /* Легкое увеличение */
+}
+.add-button-icon,
+.popup-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.add-button:hover,
+.add-button:focus {
+  border-color: var(--accent-color);
+  stroke: var(--accent-color);
+  filter: hue-rotate(10deg);
+}
+
+.habit {
+  width: 100%;
+  min-height: 100vh;
+  padding: 2.8125rem 2.5rem 2.5rem;
+}
+
+.habit-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  margin-block-end: 1.875rem;
+  padding-inline-start: 0.625rem;
+}
+
+.habit-title {
+  color: var(--main-text);
+  font-size: 1.875rem;
+}
+
+.progres {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  max-width: 14.6875rem;
+  width: 100%;
+}
+
+.progres-title {
+  color: #ffffff; /* Белый цвет */
+  font-size: 16px; /* Увеличили с 14px */
+  font-weight: 500;
+  margin-bottom: 2px; /* Добавили отступ */
+}
+
+.progres-percent {
+  color: var(--sub-text);
+  font-size: 0.75rem;
+}
+.progres-bar {
+  position: relative;
+  flex-basis: 100%;
+  height: 0.3125rem;
+  background-color: var(--progressbar);
+  overflow: hidden;
+}
+
+.progres-bar::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--progress);
+  height: 0.3125rem;
+  border-radius: 0.25rem;
+  background-color: var(--accent-color);
+  content: '';
+  transition: 300ms;
+}
+
+.habit-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.new-comment {
+  margin-top: 0.75rem;
+}
+
+.comment {
+  display: flex;
+}
+
+.comment-day {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 8.125rem;
+  padding: 0.3125rem;
+  color: var(--main-text);
+  font-size: 0.875rem;
+  font-weight: 500;
+  background-color: var(--secondary-background);
+  border-radius: 0.625rem 0 0 0.625rem;
+  border-right: 1px solid var(--border);
+}
+
+.comment-description {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-grow: 1;
+  padding: 0.4375rem 0.3125rem 0.3125rem 1.5rem;
+  background-color: #ffffff;
+  border-radius: 0 0.625rem 0.625rem 0;
+}
+
+.comment-text {
+  display: block;
+  padding-inline-end: 0.625rem;
+  color: var(--input-text);
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.delete {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  margin: 0.5rem;
+  padding: 0.1875rem;
+  border: none;
+  border-radius: 0.3125rem;
+  background: none;
+  cursor: pointer;
+  transition: 300ms;
+}
+
+.delete:hover {
+  background: var(--button-color);
+}
+
+.delete-button-icon {
+  width: 1.375rem;
+  height: 1.5rem;
+}
+
+.comment-input {
+  width: 100%;
+  padding: 12px 12px 12px 40px;
+  color: #2a2152; /* Темно-фиолетовый текст */
+  font-size: 16px;
+  font-weight: 500;
+  border: 1px solid var(--border);
+  background: #fbfaff url('../img/chat.svg') no-repeat 15px center;
+  border-radius: 0.625rem;
+}
+
+.comment-input::placeholder {
+  color: #94a3bd; /* Серо-голубой плейсхолдер */
+  font-size: 0.875rem;
+}
+.button {
+  margin-inline-start: 0.875rem;
+  padding: 0.875rem 2rem 0.6875rem;
+  color: var(--accent-color);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  border: none;
+  border-radius: 0.625rem;
+  border: 1px solid transparent;
+  background-color: var(--button-color);
+  cursor: pointer;
+  transition: 300ms;
+}
+
+.button:hover {
+  border-color: var(--border);
+  filter: contrast(0.93);
+}
+
+.greeting {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  width: 100%;
+  height: 100%;
+  padding-block: 2.5rem;
+}
+
+.greeting-title {
+  position: relative;
+  background-color: var(--main-text);
+  font-size: 70px;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: rgba(182, 182, 182, 0.4) 0px 3px 3px;
+}
+
+.greeting-subtitle {
+  position: absolute;
+  top: 10px;
+  right: 24px;
+  color: var(--sub-text);
+  font-size: 14px;
+  text-shadow: rgba(182, 182, 182, 0.5) 0px 3px 3px;
+}
+
+.popup {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  z-index: 5;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  max-width: 26.5rem;
+  width: 100%;
+  padding: 1.38rem;
+  border-radius: 0.625rem;
+  background-color: #ffffff;
+  transform: translate(-50%, -50%);
+}
+
+.popup-open {
+  display: flex;
+}
+
+.shadow::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 1;
+  background: var(--shadow-background);
+  content: '';
+}
+
+.popup-head {
+  margin-bottom: 1.125rem;
+  color: var(--accent-color); /* Изменено с var(--main-text) на акцентный фиолетовый */
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+
+
+.popup-subtext {
+  margin-bottom: 0.5rem;
+  color: var(--sub-text); /* Можно оставить как есть или изменить на var(--batton-add) */
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+
+.popup-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  width: 100%;
+}
+
+.popup-button-list {
+  display: flex;
+  gap: 1.5625rem;
+}
+
+.popup-button {
+  border: 1px solid var(--accent-color);
+  stroke: var(--accent-color);
+}
+
+.popup-button:hover,
+.popup-button:focus {
+  background: var(--accent-color);
+  stroke: #ffffff;
+  filter: hue-rotate(10deg);
+}
+
+.popup-radio {
+  display: none;
+}
+
+.popup-radio:checked + .popup-button {
+  background: var(--accent-color);
+  stroke: #ffffff;
+}
+
+.popup-input-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  width: 100%;
+}
+
+.popup-input {
+  width: 100%;
+  padding: 12px 20px;
+  color: #2a2152; /* Темно-фиолетовый текст */
+  font-size: 1rem;
+  border-radius: 0.625rem;
+  border: 1px solid var(--border);
+  background-color: #fbfaff; /* Светлый фон поля */
+}
+
+.popup-input::placeholder {
+  color: #94a3bd; /* Серо-голубой плейсхолдер */
+}
+
+.popup-form-button {
+  margin: 0;
+}
+
+.popup-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: 0;
+  background: none;
+  border: none;
+  stroke: var(--sub-text);
+  cursor: pointer;
+  transition: 300ms;
+}
+
+.popup-close:hover,
+.popup-close:focus {
+  stroke: var(--accent-color);
+}
+
+.popup-close-icon {
+  width: 100%;
+  height: 100%;
+}
+
+.error {
+  outline: 1px solid rgb(194, 13, 13);
+}
+
+@media screen and (max-width: 450px) {
+  .popup {
+    top: 50%;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .header {
+    padding: 1.875rem 0.3125rem;
+  }
+
+  .logo {
+    width: 100%;
+    height: auto;
+  }
+
+  .habit-header {
+    flex-direction: column;
+  }
+
+  .comment {
+    flex-direction: column;
+  }
+
+  .comment-day {
+    padding: 0.625rem;
+    border-radius: 0.625rem 0.625rem 0 0;
+    border: none;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .comment-description {
+    flex-wrap: wrap;
+    gap: 0.625rem;
+    border-radius: 0 0 0.625rem 0.625rem;
+    padding-left: 0.3125rem;
+  }
+
+  .comment-text {
+    flex-basis: 100px;
+    flex-grow: 1;
+    padding: 0.625rem 0;
+  }
+
+  .comment-input {
+    width: 100%;
+    padding-block: 0.75rem;
+  }
+
+  .button {
+    width: 100%;
+    margin: 0;
+  }
+.popup-input:focus, .comment-input:focus {
+  border-color: #7b4ae2;
+  outline: none;
+}
+.popup-input, .comment-input {
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.habbit-name {
+  font-size: 14px;
+  color: var(--main-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.delete-btn {
+  background: rgba(255, 107, 107, 0.1); /* Легкий красный фон */
+  border: 1px solid rgba(255, 107, 107, 0.3); /* Тонкая красная рамка */
+  color: #ff6b6b;
+  font-size: 12px;
+  padding: 6px 16px; /* Увеличим отступы */
+  cursor: pointer;
+  border-radius: 15px; /* Сильное скругление углов */
+  width: fit-content;
+  margin: 4px auto 0; /* Отступ сверху и центрирование */
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.3s ease;
+}
+
+
+.delete-btn:hover {
+  background: rgba(255, 107, 107, 0.2); /* Темнее при наведении */
+  border-color: rgba(255, 107, 107, 0.5);
+  text-decoration: none;
+}
+
+.delete-habbit {
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  padding: 2px;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.delete-icon {
+  width: 12px;
+  height: 12px;
+  stroke: var(--sub-text);
+  transition: stroke 0.2s;
+}
+
+.delete-habbit:hover .delete-icon {
+  stroke: #ff4d4d;
+}
+/* Для мобильной версии */
+@media (max-width: 800px) {
+  .habbit-name {
+    font-size: 13px;
+  }
+
+  .delete-btn {
+    font-size: 11px;
+    padding: 3px 10px;
+  }
+}
+.achievement-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(26, 16, 61, 0.9);
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+
+.achievement-popup.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.achievement-content {
+  background: var(--secondary-background);
+  padding: 2rem;
+  border-radius: 1rem;
+  text-align: center;
+  max-width: 300px;
+  animation: achievementBounce 0.5s;
+}
+
+.achievement-icon {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+@keyframes achievementBounce {
+  0% { transform: scale(0.5); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+//* Основные стили остаются без изменений */
+/* Добавляем новые стили для системы достижений */
+
+/* Уведомление о достижении */
+.achievement-notification {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.9);
+  opacity: 0;
+  z-index: 1000;
+  transition: all 0.3s ease;
+  pointer-events: none;
+  width: 90%;
+  max-width: 320px;
+}
+
+.achievement-notification.active {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+}
+
+/* Страница достижений */
+.achievements-page {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(26, 16, 61, 0.95);
+  z-index: 100;
+  display: none;
+  overflow-y: auto;
+  padding: 20px;
+}
+
+.achievements-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.achievements-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.achievement-card {
+  background: var(--secondary-background);
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.achievement-card.unlocked {
+  border: 5px solid #7B4AE2;
+  box-shadow: 0 4px 15px rgba(123, 74, 226, 0.2);
+}
+
+.achievement-card.locked {
+  opacity: 0.6;
+  filter: grayscale(80%);
+}
+
+.achievement-card-icon {
+  font-size: 40px;
+  margin-bottom: 15px;
+}
+
+.achievement-card-title {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: var(--main-text);
+}
+
+.achievement-card-desc {
+  font-size: 14px;
+  color: var(--sub-text);
+}
+
+/* Кнопка показа достижений */
+.achievements-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: var(--accent-color);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  z-index: 99;
+  box-shadow: 0 4px 15px rgba(123, 74, 226, 0.3);
+  transition: all 0.3s ease;
+}
+
+.achievements-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(123, 74, 226, 0.4);
+}
+
+.achievements-button svg {
+  width: 20px;
+  height: 20px;
+}
+
+.close-achievements {
+  margin-top: 30px;
+  width: 100%;
+}
+/* Базовые стили для широких экранов 16:9 */
+@media (min-width: 1366px) and (min-aspect-ratio: 16/9) {
+  .wrapper {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    max-width: none;
+    height: 100vh;
+  }
+
+  .header {
+    min-height: auto;
+    height: 100%;
+    padding: 2rem 1rem;
+  }
+
+  .habit {
+    padding: 2.5rem 3rem;
+    overflow-y: auto;
+  }
+
+  /* Фиксируем кнопку достижений */
+  #show-achievements-btn {
+    right: 30px;
+    bottom: 30px;
+    padding: 15px 25px;
+    font-size: 16px;
+  }
+
+  /* Улучшаем отображение привычек */
+  .habit-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .comment {
+    flex-direction: column;
+    border-radius: 12px;
+    background: var(--secondary-background);
+  }
+
+  .comment-day {
+    border-radius: 12px 12px 0 0;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .comment-description {
+    border-radius: 0 0 12px 12px;
+    padding: 1rem;
+  }
+}
+/* Улучшенная мобильная версия */
+@media (max-width: 767px) {
+  .wrapper {
+    flex-direction: column;
+  }
+
+  .header {
+    min-height: auto;
+    padding: 1rem;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+
+  .habit {
+    padding: 1.5rem 1rem;
+    min-height: calc(100vh - 80px);
+  }
+
+  #show-achievements-btn {
+    right: 15px;
+    bottom: 15px;
+    padding: 12px 20px;
+    font-size: 14px;
+  }
+}
+.habit-scroll-container {
+  max-height: calc(100vh - 40px);
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+/* Кастомный скроллбар для десктопов */
+@media (min-width: 1366px) {
+  .habit-scroll-container::-webkit-scrollbar {
+    width: 6px;
+  }
+  .habit-scroll-container::-webkit-scrollbar-thumb {
+    background: var(--accent-color);
+    border-radius: 3px;
+  }
+}
+/* Адаптируем попапы для 16:9 */
+@media (min-aspect-ratio: 16/9) {
+  .popup {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-height: 80vh;
+  }
+
+  .achievements-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .achievements-container {
+    max-width: 800px;
+    max-height: 80vh;
+    overflow-y: auto;
+  }
+}

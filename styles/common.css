@@ -1,0 +1,28 @@
+:root {
+  --main-background: #1a103d;
+  --secondary-background: #2a2152;
+  --accent-color: #7b4ae2;
+  --border: #3a3262;
+  --main-text: #ffffff;
+  --sub-text: #b8b8ff;
+  --input-text: #f0f0ff;
+  --placeholder: #a0a0c0;
+  --progressbar: #3a3262;
+  --button-color: #3a3262;
+  --batton-add: #7b4ae2;
+  --batton-shadow: 0px 8px 14px 0px rgba(123, 74, 226, 0.2);
+  --popup-shadow: 0px 8px 14px 12px rgba(26, 16, 61, 0.3);
+  --shadow-background: rgba(0, 0, 0, 0.5);
+  --progress: 0%;
+  --input-bg: #fbfaff; /* Светлый фон полей ввода */
+  --input-text: #2a2152; /* Темно-фиолетовый текст */
+  --input-placeholder: #94a3bd; /* Цвет плейсхолдера */
+  --icon-default: #B8B8FF;  /* Светло-фиолетовый */
+  --icon-active: #7B4AE2;   /* Ярко-фиолетовый */
+  --icon-hover: #FFFFFF;    /* Белый */
+}
+
+body {
+  font-family: 'Comfortaa', cursive;
+  color: var(--main-text);
+}
