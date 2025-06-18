@@ -1,0 +1,5 @@
+<svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Иконка задачи (галочка в круге) -->
+  <circle cx="30" cy="30" r="25" stroke="#B8B8FF" stroke-width="4"/>
+  <path d="M20 30L27 37L40 23" stroke="#7B4AE2" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
