@@ -1,0 +1,12 @@
+{
+  "name": "habit-tracker",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "live-server --port=3000 --open=/",
+    "build": "mkdir -p dist && cp -r *.html css/ js/ img/ dist/",
+    "deploy": "echo 'Загрузите папку dist/ на сервер вручную'"
+  },
+  "dependencies": {
+    "live-server": "^1.2.2"
+  }
+}
